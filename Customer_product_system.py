@@ -3,6 +3,9 @@ Customer product system that manage customer and product data
 <---Starts with the main menu--->
 """
 
+from customer_operations import *
+from product_operations import *
+
 
 def main():
     menu = {'1': "Customer operations.", '2': "Product Operations.", '3': "Queries", '4': "Exit"}
@@ -26,9 +29,11 @@ def main():
 
                         selection_2 = input("Please select: ")
                         if selection_2 == '1':
-                            pass
+                            customer_list.append(insert_customer())
+                            print(customer_list)
                         elif selection_2 == '2':
-                            pass
+                            delete_customer(customer_list)
+                            print(customer_list)
                         elif selection_2 == '3':
                             pass
                         elif selection_2 == '4':
@@ -49,9 +54,11 @@ def main():
 
                         selection_3 = input("Please select: ")
                         if selection_3 == '1':
-                            pass
+                            products.append(insert_product())
+                            print(products)
                         if selection_3 == '2':
-                            pass
+                            delete_product(products)
+                            print(products)
                         if selection_3 == '3':
                             pass
                         if selection_3 == '4':

@@ -20,13 +20,12 @@ def insert_customer():
 
 
 def delete_customer(customer_list):
-    id_to_delete = int(input("Enter the customer id to delete: "))
+    id_to_delete = input("Enter the customer id to delete: ")
     for i in range(len(customer_list)-1):
         customer_id = customer_list[i]['customer_id']
         if customer_id == id_to_delete:
             customer_list.remove(customer_list[i])
     return customer_list
-
 
 def update_customer():
     update_data = int(input("Enter the customer id: "))
@@ -39,6 +38,3 @@ def write_data():
     infile = open('Customers.txt', 'w')
     infile.write(str(customer_data))
     infile.close()
-
-
-delete_customer(customer_list)
