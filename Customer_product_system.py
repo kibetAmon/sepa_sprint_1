@@ -9,15 +9,17 @@ from product_operations import *
 
 def main():
     menu = {'1': "Customer operations.", '2': "Product Operations.", '3': "Queries", '4': "Exit"}
+    print()
+    print(menu)
+    print('------------------------------------------------------------------------------------')
 
     while True:
         options = menu.keys()
         for entry in options:
-            print(entry, menu[entry])
-
-            selection = input("Please select: ")
+            selection = input("Please select from choices above: ")
             if selection == '1':
-                print("You are in customer operations.")
+                print("You are in customer operations!")
+                print()
                 sub_menu_1 = {'1': "Insert a new customer.",
                               '2': "Delete a customer.",
                               '3': "Update Customer data.",
@@ -25,19 +27,28 @@ def main():
                 while True:
                     options_2 = sub_menu_1.keys()
                     for entry_2 in options_2:
-                        print(entry_2, sub_menu_1[entry_2])
-
-                        selection_2 = input("Please select: ")
+                        print(sub_menu_1)
+                        print('---------------------------------------------------------------------------------')
+                        selection_2 = input("Please select from choices above: ")
                         if selection_2 == '1':
                             customer_list.append(insert_customer())
                             print(customer_list)
+
                         elif selection_2 == '2':
                             delete_customer(customer_list)
                             print(customer_list)
+
                         elif selection_2 == '3':
-                            pass
+                            update_customer(customer_list)
+                            print(customer_list)
+
                         elif selection_2 == '4':
-                            pass
+                            write_c_data(customer_list)
+                            print(customer_list)
+                            print()
+                            print("Customer information successfully stored.")
+                            print()
+
                         else:
                             print("Unknown Option Selected!")
             elif selection == '2':
@@ -50,19 +61,27 @@ def main():
                 while True:
                     options_3 = sub_menu_2.keys()
                     for entry_3 in options_3:
-                        print(entry_3, sub_menu_2[entry_3])
+                        print(sub_menu_2)
 
                         selection_3 = input("Please select: ")
                         if selection_3 == '1':
                             products.append(insert_product())
                             print(products)
+
                         if selection_3 == '2':
                             delete_product(products)
                             print(products)
+
                         if selection_3 == '3':
-                            pass
+                            update_product(products)
+                            print(products)
+
                         if selection_3 == '4':
-                            pass
+                            write_product_data(products)
+                            print(products)
+                            print("Product data successfully stored!")
+                            print()
+
                         if selection_3 == '5':
                             pass
                         else:
