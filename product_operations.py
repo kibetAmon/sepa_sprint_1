@@ -81,7 +81,9 @@ def purchase(products):
             else:
                 print("Out of stock.")
 
-    return products
+    print("\nCustomer Id is: ", customer_id, "\nProduct Id is: ",
+          p_p_id, "\nAmount purchased is: ", purchase_amount, "\nRemaining amount is: ", amount)
+
 
 
 
