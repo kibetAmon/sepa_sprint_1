@@ -83,7 +83,9 @@ def main():
                             print()
 
                         if selection_3 == '5':
-                            pass
+                            purchase(products)
+                            print()
+                            print(products)
                         else:
                             print("Unknown Option Selected!")
             elif selection == '3':

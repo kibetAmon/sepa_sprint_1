@@ -7,6 +7,8 @@ product_operations.py
   <--Purchases-->
 """
 
+from customer_operations import *
+
 
 products = [{"name": 'brownies', "product_id": '6749366284624264', "amount": 50, "price": '255.50'},
             {"name": 'cookies', "product_id": '367216784637438', "amount": 90, "price": '100.00'},
@@ -67,6 +69,21 @@ def write_product_data(products):
     infile.close()
 
 
-def purchase()
-    pass
+def purchase(products):
+    customer_id = input("Enter the customer id to purchase: ")
+    p_p_id = input("Enter the product id to make a purchase: ")
+    purchase_amount = int(input("Enter the amount to purchase: "))
+    for i in range(len(products)):
+        if p_p_id == products[i]['product_id']:
+            if purchase_amount <= products[i]['amount']:
+                amount = products[i]['amount'] - purchase_amount
+                products[i]['amount'] = amount
+            else:
+                print("Out of stock.")
+
+    return products
+
+
+
+
 
