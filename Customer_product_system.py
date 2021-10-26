@@ -95,11 +95,12 @@ def main():
                 while True:
                     options_4 = sub_menu_3.keys()
                     for entry_4 in options_4:
-                        print(entry_4, sub_menu_3[entry_4])
+                        print(sub_menu_3)
 
                         selection_4 = input("Please select:")
                         if selection_4 == '1':
-                            pass
+                            search(products)
+
                         if selection_4 == '2':
                             pass
                         if selection_4 == '3':

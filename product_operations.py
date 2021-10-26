@@ -9,7 +9,6 @@ product_operations.py
 
 from customer_operations import *
 
-
 products = [{"name": 'brownies', "product_id": '6749366284624264', "amount": 50, "price": '255.50'},
             {"name": 'cookies', "product_id": '367216784637438', "amount": 90, "price": '100.00'},
             {"name": 'fries', "product_id": '93547264003', "amount": 75, "price": '75.50'}]
@@ -85,7 +84,35 @@ def purchase(products):
           p_p_id, "\nAmount purchased is: ", purchase_amount, "\nRemaining amount is: ", amount)
 
 
+"""
+<---QUERIES SECTION--->
+   -search of a product
+   -listing of all customers
+   -listing of products
+   -list customer's name, products bought and total amount spent
+   -quit
+"""
+
+
+def search(products):
+    p_search = input("What product would you like to search? ")
+    for i in range(len(products)):
+        if p_search == products[i]['name']:
+            amount = products[i]['amount']
+            price = products[i]['price']
+            print("product found: ", products[i]['name'], "\namount is:", amount, "\nPrice is: ", price)
+        elif p_search != products[i]['name']:
+            print("Product not found! ")
 
 
 
+def customers():
+    pass
 
+
+def product_list():
+    pass
+
+
+def customer_details():
+    pass
