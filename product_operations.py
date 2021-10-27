@@ -105,13 +105,16 @@ def search(products):
             print("Product not found! ")
 
 
-
-def customers():
-    pass
-
-
-def product_list():
-    pass
+def list_products_and_customers():
+    option = int(input("What would you like to list?\n 1.Customers\n2.Products\nChoose option from above:"))
+    if option == 1:
+        write_c_data(customer_list)
+        c_list = open("Customers.txt", "r").read()
+        print(c_list)
+    elif option == 2:
+        write_product_data(products)
+        p_list = open("products_data.txt", "r").read()
+        print(p_list)
 
 
 def customer_details():

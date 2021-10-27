@@ -16,7 +16,7 @@ def main():
     while True:
         options = menu.keys()
         for entry in options:
-            selection = input("Please select from choices above: ")
+            selection = input("Please select from the menu above: ")
             if selection == '1':
                 print("You are in customer operations!")
                 print()
@@ -89,9 +89,8 @@ def main():
             elif selection == '3':
                 print("You are in queries section")
                 sub_menu_3 = {'1': "Search for a product:",
-                              '2': "List the customers",
-                              '3': "List the Products",
-                              '4': "Quit"}
+                              '2': "List Customers and products.",
+                              '3': "List Customer's purchase details."}
                 while True:
                     options_4 = sub_menu_3.keys()
                     for entry_4 in options_4:
@@ -102,10 +101,9 @@ def main():
                             search(products)
 
                         if selection_4 == '2':
-                            pass
+                            list_products_and_customers()
+
                         if selection_4 == '3':
-                            pass
-                        if selection_4 == '4':
                             pass
                         else:
                             print("Unknown Option Selected")
