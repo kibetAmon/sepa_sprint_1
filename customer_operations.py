@@ -29,7 +29,7 @@ def delete_customer(customer_list):
 
 
 def update_customer(customer_list):
-    update_id = input("Enter the customer id: ")
+    update_id = input("Kindly enter the customer id to update: ")
     print("""
     1. update by name.
     2. update by address.""")

@@ -8,110 +8,101 @@ from product_operations import *
 
 
 def main():
-    menu = {'1': "Customer operations.", '2': "Product Operations.", '3': "Queries", '4': "Exit"}
+    print("""
+        1. Customer Operations
+        2. Product Operations
+        3. Queries
+    """)
     print()
-    print(menu)
     print('------------------------------------------------------------------------------------')
 
     while True:
-        options = menu.keys()
-        for entry in options:
-            selection = input("Please select from the menu above: ")
-            if selection == '1':
+        selection = int(input("Please select from the menu above: "))
+        if selection == 1:
                 print("You are in customer operations!")
                 print()
-                sub_menu_1 = {'1': "Insert a new customer.",
-                              '2': "Delete a customer.",
-                              '3': "Update Customer data.",
-                              '4': "Write Customer data to a file."}
+                print("""
+                1. Insert a new Customer
+                2. Delete a Customer
+                3. Update a Customer
+                4. Write Customer data to a file
+                """)
                 while True:
-                    options_2 = sub_menu_1.keys()
-                    for entry_2 in options_2:
-                        print(sub_menu_1)
-                        print('---------------------------------------------------------------------------------')
-                        selection_2 = input("Please select from choices above: ")
-                        if selection_2 == '1':
-                            customer_list.append(insert_customer())
-                            print(customer_list)
+                    print('---------------------------------------------------------------------------------')
+                    selection_2 = int(input("Please select from customer operations above: "))
+                    if selection_2 == 1:
+                        customer_list.append(insert_customer())
+                        print(customer_list, "\nCustomer inserted successfully.")
 
-                        elif selection_2 == '2':
-                            delete_customer(customer_list)
-                            print(customer_list)
+                    elif selection_2 == 2:
+                        delete_customer(customer_list)
+                        print(customer_list, "\nCustomer deleted successfully")
 
-                        elif selection_2 == '3':
-                            update_customer(customer_list)
-                            print(customer_list)
+                    elif selection_2 == 3:
+                        update_customer(customer_list)
+                        print(customer_list, "\nCustomer information successfully updated.")
 
-                        elif selection_2 == '4':
-                            write_c_data(customer_list)
-                            print(customer_list)
-                            print()
-                            print("Customer information successfully stored.")
-                            print()
+                    elif selection_2 == 4:
+                        write_c_data(customer_list)
+                        print(customer_list, "\nCustomer information successfully stored.")
+                        print()
 
-                        else:
-                            print("Unknown Option Selected!")
-            elif selection == '2':
-                print("You are in product operations.")
-                sub_menu_2 = {'1': "Insert a new product.",
-                              '2': "Delete a product.",
-                              '3': "Update product data.",
-                              '4': "Write product data to a file.",
-                              '5': "Purchase"}
-                while True:
-                    options_3 = sub_menu_2.keys()
-                    for entry_3 in options_3:
-                        print(sub_menu_2)
+                    else:
+                        print("Unknown Option Selected!")
 
-                        selection_3 = input("Please select: ")
-                        if selection_3 == '1':
-                            products.append(insert_product())
-                            print(products)
+        elif selection == 2:
+            print("You are in product operations.")
+            print()
+            print("""
+                1. Insert a new Product
+                2. Delete a Product
+                3. Update Product data
+                4. Write Product data to a file
+                5. Purchase
+                """)
+            while True:
+                selection_3 = int(input("Please select a product operation from choices above: "))
+                if selection_3 == 1:
+                    products.append(insert_product())
+                    print(products, "\nNew Product inserted successfully.")
+                elif selection_3 == 2:
+                    delete_product(products)
+                    print(products, "\nProduct deleted Successfully! ")
+                elif selection_3 == 4:
+                    update_product(products)
+                    print(products, "\nProduct updated successfully.")
+                elif selection_3 == 4:
+                    write_product_data(products)
+                    print(products, "\nProduct data successfully stored!")
+                    print()
+                elif selection_3 == 5:
+                    purchase(products)
+                else:
+                    print("Unknown Option Selected!")
+        elif selection == 3:
+            print("You are in queries section")
+            print()
+            print("""
+                1. Search for a Product
+                2. List Customers and Products
+                3. List Customer's purchase details
+                """)
+            while True:
+                selection_4 = int(input("Please select:"))
+                if selection_4 == 1:
+                    search(products)
 
-                        if selection_3 == '2':
-                            delete_product(products)
-                            print(products)
+                elif selection_4 == 2:
+                    list_products_and_customers()
+                    break
 
-                        if selection_3 == '3':
-                            update_product(products)
-                            print(products)
+                elif selection_4 == 3:
+                    pass
 
-                        if selection_3 == '4':
-                            write_product_data(products)
-                            print(products)
-                            print("Product data successfully stored!")
-                            print()
-
-                        if selection_3 == '5':
-                            purchase(products)
-                        else:
-                            print("Unknown Option Selected!")
-            elif selection == '3':
-                print("You are in queries section")
-                sub_menu_3 = {'1': "Search for a product:",
-                              '2': "List Customers and products.",
-                              '3': "List Customer's purchase details."}
-                while True:
-                    options_4 = sub_menu_3.keys()
-                    for entry_4 in options_4:
-                        print(sub_menu_3)
-
-                        selection_4 = input("Please select:")
-                        if selection_4 == '1':
-                            search(products)
-
-                        if selection_4 == '2':
-                            list_products_and_customers()
-
-                        if selection_4 == '3':
-                            pass
-                        else:
-                            print("Unknown Option Selected")
-
-            elif selection == '4':
+                else:
+                    print("Unknown Option Selected")
+        elif selection == '4':
                 break
-            else:
-                print("Unknown option selected!")
 
 
 main()

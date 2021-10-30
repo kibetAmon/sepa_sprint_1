@@ -8,6 +8,7 @@ product_operations.py
 """
 
 from customer_operations import *
+global customer_id
 
 products = [{"name": 'brownies', "product_id": '6749366284624264', "amount": 50, "price": '255.50'},
             {"name": 'cookies', "product_id": '367216784637438', "amount": 90, "price": '100.00'},
@@ -95,13 +96,14 @@ def purchase(products):
 
 
 def search(products):
-    p_search = input("What product would you like to search? ")
+    p_search = input("Enter the product id to search: ")
     for i in range(len(products)):
-        if p_search == products[i]['name']:
+        if p_search == products[i]['product_id']:
             amount = products[i]['amount']
             price = products[i]['price']
             print("product found: ", products[i]['name'], "\namount is:", amount, "\nPrice is: ", price)
-        elif p_search != products[i]['name']:
+            break
+        else:
             print("Product not found! ")
 
 
@@ -117,5 +119,10 @@ def list_products_and_customers():
         print(p_list)
 
 
-def customer_details():
-    pass
+def customer_details(products, customer_list):
+    for i in range(len(customer_list)):
+        name = customer_list[i]['name']
+        print(name)
+
+
+
