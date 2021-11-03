@@ -70,6 +70,7 @@ def write_product_data(products):
 
 
 def purchase(products):
+    total = 0.0
     customer_id = input("Enter the customer id to purchase: ")
     p_p_id = input("Enter the product id to make a purchase: ")
     purchase_amount = int(input("Enter the amount to purchase: "))
@@ -78,11 +79,21 @@ def purchase(products):
             if purchase_amount <= products[i]['amount']:
                 amount = products[i]['amount'] - purchase_amount
                 products[i]['amount'] = amount
+                purchased = products[i]['name']
+                price = products[i]['price']
+                price = float(price)
+                spent = price * amount
+                total = total + spent
+                details = {"customer id": customer_id, "amount purchased": purchase_amount,
+                           "purchased": purchased, "total spent": total}
+                print("Purchase done successfully and details stored!")
+                #writing to a file
+                infile = open("purchase_details.txt", "w")
+                infile.write(str(details))
+                infile.close()
             else:
                 print("Out of stock.")
 
-    print("\nCustomer Id is: ", customer_id, "\nProduct Id is: ",
-          p_p_id, "\nAmount purchased is: ", purchase_amount, "\nRemaining amount is: ", amount)
 
 
 """
@@ -119,10 +130,13 @@ def list_products_and_customers():
         print(p_list)
 
 
-def customer_details(products, customer_list):
-    for i in range(len(customer_list)):
-        name = customer_list[i]['name']
-        print(name)
+def customer_details():
+    customerDetails = open("purchase_details.txt", "r").read()
+    print(customerDetails)
+
+
+
+
 
 
 
