@@ -7,9 +7,46 @@ product_operations.py
   <--Purchases-->
 """
 
+PRODUCTS = []
+
+
+class Product:
+    def __init__(self, name, p_id, p_amount, price):
+        self.name = name
+        self.id = p_id
+        self.amount = p_amount
+        self.price = price
+
+
+def insert_product():
+    name = input("Enter the product name: ")
+    id = input("Enter the product id: ")
+    amount = input("Enter the product amount: ")
+    price = input("Enter the product price: ")
+    product = Product(name, id, amount, price)
+    PRODUCTS.append(product)
+    print(PRODUCTS)
+
+
+def delete():
+    id_to_delete = input("Enter the product id to delete: ")
+    for i in range(len(PRODUCTS)):
+        product_id = PRODUCTS[i].id
+        if product_id == id_to_delete:
+            del PRODUCTS[i]
+    print("Product id deleted successfully")
+
+
+
+
+
+
+
+'''
 from customer_operations import *
 global customer_id
 
+    
 products = [{"name": 'brownies', "product_id": '6749366284624264', "amount": 50, "price": '255.50'},
             {"name": 'cookies', "product_id": '367216784637438', "amount": 90, "price": '100.00'},
             {"name": 'fries', "product_id": '93547264003', "amount": 75, "price": '75.50'}]
@@ -133,7 +170,7 @@ def list_products_and_customers():
 def customer_details():
     customerDetails = open("purchase_details.txt", "r").read()
     print(customerDetails)
-
+'''
 
 
 

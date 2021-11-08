@@ -6,6 +6,27 @@ Customer_operations.py
     <--writing of customer data to a file-->
 """
 
+
+class Customers:
+    def __init__(self, name, address, c_id):
+        self.name = name
+        self.address = address
+        self.c_id = c_id
+
+    def insert_customer(self):
+        self.name = input("Enter a customer's name: ")
+        self.c_id = input("Enter a customer's id: ")
+        self.address = input("Enter a customer's address: ")
+        data = Customers(self.name, self.address, self.c_id)
+        print(data)
+
+cus = Customers("amon", "567", "78")
+amon = cus.insert_customer()
+print(amon)
+
+
+
+'''
 customer_list = [{"name": 'amon', "address": '20400', "customer_id": '140734621121696'},
                  {"name": 'Felix', "address": '50100', "customer_id": '140734621121728'},
                  {"name": 'Jeremy', "address": '56700', "customer_id": '140734617124064'}]
@@ -55,3 +76,4 @@ def write_c_data(customer_list):
     infile = open('Customers.txt', 'w')
     infile.write(str(customer_list))
     infile.close()
+'''
