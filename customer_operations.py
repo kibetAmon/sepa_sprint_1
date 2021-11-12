@@ -6,6 +6,9 @@ Customer_operations.py
     <--writing of customer data to a file-->
 """
 
+CUSTOMERS = []
+Customer_file = open("customer.txt", "a")
+
 
 class Customers:
     def __init__(self, name, address, c_id):
@@ -13,16 +16,46 @@ class Customers:
         self.address = address
         self.c_id = c_id
 
-    def insert_customer(self):
-        self.name = input("Enter a customer's name: ")
-        self.c_id = input("Enter a customer's id: ")
-        self.address = input("Enter a customer's address: ")
-        data = Customers(self.name, self.address, self.c_id)
-        print(data)
 
-cus = Customers("amon", "567", "78")
-amon = cus.insert_customer()
-print(amon)
+def insert_customer():
+    name = input("Enter a customer's name: ")
+    c_id = input("Enter a customer's id: ")
+    address = input("Enter a customer's address: ")
+    customer = Customers(name, c_id, address)
+    CUSTOMERS.append(customer)
+    return CUSTOMERS
+
+
+def delete_customer():
+    cus_id = input("Enter the customer id to delete")
+    for i in range(len(CUSTOMERS)):
+        customer_id = CUSTOMERS[i].c_id
+        if customer_id == cus_id:
+            del CUSTOMERS[i]
+    print("Customer deleted successfully")
+
+
+def update_customer():
+    update_id = input("Kindly enter the customer id to update: ")
+    print("""
+    1. update by name.
+    2. update by address.""")
+    update_option = int(input("Enter your update option: "))
+    for i in range(len(CUSTOMERS)):
+        c_id = CUSTOMERS[i].c_id
+        if c_id == update_id:
+            if update_option == 1:
+                new_name = input("Enter a new name")
+                CUSTOMERS.name = new_name
+            else:
+                new_address = input("Enter a new address")
+                CUSTOMERS.address = new_address
+                break
+    return CUSTOMERS
+
+
+def write_file():
+    print(CUSTOMERS, file = Customer_file)
 
 
 
@@ -77,3 +110,5 @@ def write_c_data(customer_list):
     infile.write(str(customer_list))
     infile.close()
 '''
+
+insert_customer()

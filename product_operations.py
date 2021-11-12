@@ -8,6 +8,7 @@ product_operations.py
 """
 
 PRODUCTS = []
+product_file = open("products.txt", "a")
 
 
 class Product:
@@ -36,6 +37,9 @@ def delete():
             del PRODUCTS[i]
     print("Product id deleted successfully")
 
+
+def p_update():
+    pass
 
 
 
