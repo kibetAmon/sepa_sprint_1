@@ -32,26 +32,26 @@ def main():
                 print('---------------------------------------------------------------------------------')
                 selection_2 = int(input("Please select from customer operations above: "))
                 if selection_2 == 1:
-                    customer_list.append(insert_customer())
-                    print(customer_list, "\nCustomer inserted successfully.")
+                    insert_customer()
+                    print("Customer inserted successfully.")
                     print("-----------------------------")
                     proceed = int(input("Would you like to: \n 1.Delete a customer  2.Exit \nEnter Here: "))
                     if proceed == 1:
-                        delete_customer(customer_list)
-                        print(customer_list, "\nCustomer deleted successfully")
+                        delete_customer()
+                        print("Customer deleted successfully")
                         print("-------------------------")
                         break
                     else:
                         exit()
 
                 elif selection_2 == 2:
-                    delete_customer(customer_list)
-                    print(customer_list, "\nCustomer deleted successfully")
+                    delete_customer()
+                    print("Customer deleted successfully")
                     print("-----------------------------")
                     proceed = int(input("Would you like to: \n1. Update a customer 2. Exit \nEnter Here: "))
                     if proceed == 1:
-                        update_customer(customer_list)
-                        print(customer_list, "\nCustomer information successfully updated.")
+                        update_customer()
+                        print(CUSTOMERS, "\nCustomer information successfully updated.")
                         print("------------------------")
                         break
                     else:
@@ -59,13 +59,13 @@ def main():
 
 
                 elif selection_2 == 3:
-                    update_customer(customer_list)
-                    print(customer_list, "\nCustomer information successfully updated.")
+                    update_customer()
+                    print("Customer information successfully updated.")
                     print("----------------------------")
                     proceed = int(input("Would you like to: \n1. Write customer data to a file 2. Exit \nEnter Here"))
                     if proceed == 1:
-                        write_c_data(customer_list)
-                        print(customer_list, "\nCustomer information successfully stored.")
+                        write_file()
+                        print("Customer information successfully stored.")
                         print("-----------------------")
                         break
                     else:
@@ -73,8 +73,8 @@ def main():
 
 
                 elif selection_2 == 4:
-                    write_c_data(customer_list)
-                    print(customer_list, "\nCustomer information successfully stored.")
+                    write_file()
+                    print("Customer information successfully stored.")
                     print("-----------------------------")
                     proceed = int(input("Would you like to : \n1. Proceed to Product operations 2. Exit \nEnter Here:"))
                     if proceed == 1:
@@ -90,7 +90,7 @@ def main():
 
 
 
-
+'''
         elif selection == 2:
             print("You are in product operations.")
             print()
@@ -222,5 +222,5 @@ def main():
             """)
             print("---------------------")
 
-
+'''
 main()

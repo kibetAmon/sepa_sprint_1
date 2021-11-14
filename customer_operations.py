@@ -7,14 +7,13 @@ Customer_operations.py
 """
 
 CUSTOMERS = []
-Customer_file = open("customer.txt", "a")
 
 
 class Customers:
-    def __init__(self, name, address, c_id):
+    def __init__(self, name, c_id, address):
         self.name = name
-        self.address = address
         self.c_id = c_id
+        self.address = address
 
 
 def insert_customer():
@@ -36,6 +35,7 @@ def delete_customer():
 
 
 def update_customer():
+    customer = Customers(name, c_id, address)
     update_id = input("Kindly enter the customer id to update: ")
     print("""
     1. update by name.
@@ -46,16 +46,20 @@ def update_customer():
         if c_id == update_id:
             if update_option == 1:
                 new_name = input("Enter a new name")
-                CUSTOMERS.name = new_name
+                customer.name = new_name
             else:
                 new_address = input("Enter a new address")
-                CUSTOMERS.address = new_address
+                customer.address = new_address
                 break
     return CUSTOMERS
 
 
 def write_file():
-    print(CUSTOMERS, file = Customer_file)
+    infile = open('customer.txt', 'w')
+    infile.write(str(CUSTOMERS))
+    infile.close()
+
+
 
 
 
@@ -110,5 +114,3 @@ def write_c_data(customer_list):
     infile.write(str(customer_list))
     infile.close()
 '''
-
-insert_customer()
