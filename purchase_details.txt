@@ -1,1 +1,1 @@
-{'customer id': '5678', 'amount purchased': 10, 'purchased': 'brownies', 'total spent': 3832.5}
+{'customer id': '565666', 'amount purchased': 20, 'purchased': 'carey', 'total spent': 10000.0}

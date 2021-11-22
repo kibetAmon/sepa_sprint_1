@@ -15,6 +15,18 @@ class Customers:
         self.c_id = c_id
         self.address = address
 
+    def get_name(self):
+        return self.name
+
+    def set_name(self, name):
+        self.name = name
+
+    def get_address(self):
+        return self.address
+
+    def set_address(self, address):
+        self.address = address
+
 
 def insert_customer():
     name = input("Enter a customer's name: ")
@@ -22,95 +34,113 @@ def insert_customer():
     address = input("Enter a customer's address: ")
     customer = Customers(name, c_id, address)
     CUSTOMERS.append(customer)
-    return CUSTOMERS
+    print("customer inserted successfully and details stored.")
+    customer_file()
 
 
 def delete_customer():
-    cus_id = input("Enter the customer id to delete")
-    for i in range(len(CUSTOMERS)):
-        customer_id = CUSTOMERS[i].c_id
-        if customer_id == cus_id:
+    load_customer()
+    cus_id = input("Enter the customer id to delete: ")
+    for i in range(len(CUSTOMERS)-1):
+        if CUSTOMERS[i].c_id == cus_id:
             del CUSTOMERS[i]
-    print("Customer deleted successfully")
+            print("Customer deleted successfully")
+        else:
+            print("Invalid ID")
+            break
+
+    customer_file()
 
 
 def update_customer():
-    customer = Customers(name, c_id, address)
+    load_customer()
     update_id = input("Kindly enter the customer id to update: ")
     print("""
     1. update by name.
     2. update by address.""")
     update_option = int(input("Enter your update option: "))
-    for i in range(len(CUSTOMERS)):
-        c_id = CUSTOMERS[i].c_id
-        if c_id == update_id:
+    for i in range(len(CUSTOMERS)-1):
+        if CUSTOMERS[i].c_id == update_id:
             if update_option == 1:
-                new_name = input("Enter a new name")
-                customer.name = new_name
+                name = input("Enter a new name: ")
+                CUSTOMERS[i].set_name(name)
+                print("updated name to: ", CUSTOMERS[i].get_name())
             else:
-                new_address = input("Enter a new address")
-                customer.address = new_address
-                break
-    return CUSTOMERS
+                address = input("Enter a new address")
+                CUSTOMERS[i].set_address(address)
+                print("Updated the address to:", CUSTOMERS[i].get_address())
+        else:
+            print("Invalid Id")
+            break
+    customer_file()
 
 
-def write_file():
-    infile = open('customer.txt', 'w')
-    infile.write(str(CUSTOMERS))
-    infile.close()
+def customer_file():
+    with open('customer.txt', "w") as myfile:
+        for c in CUSTOMERS:
+            print(c.name, c.c_id, c.address, file=myfile)
+            break
 
 
+def load_customer():
+    customer = open("customer.txt", "r")
+    for c in customer:
+        cst = c.split(" ")
+        #print(cst)
+        name = cst[0]
+        c_id = cst[1]
+        address = cst[2]
+        customer = Customers(name, c_id, address)
+        CUSTOMERS.append(customer)
 
 
+def customer_menu():
+    Exit = True
 
-'''
-customer_list = [{"name": 'amon', "address": '20400', "customer_id": '140734621121696'},
-                 {"name": 'Felix', "address": '50100', "customer_id": '140734621121728'},
-                 {"name": 'Jeremy', "address": '56700', "customer_id": '140734617124064'}]
+    while Exit == True:
+        print("""
+     1. Insert a new Customer
+     2. Delete a Customer
+     3. Update a Customer
+     4. Back to main
+    """)
 
+        print('---------------------------------------------------------------------------------')
+        selection = int(input("Please select from customer operations above: "))
 
-def insert_customer():
-    customer_name = input("Enter a customer name: ")
-    customer_address = input("Enter the customer address: ")
-    customer_id = id(customer_name)
-    customer_data = {"name": customer_name, "address": customer_address, "customer_id": customer_id}
-    return customer_data
+        if selection == 1:
+            insert_customer()
+            print("-----------------------------")
+            proceed = int(input("\nPress 1 to continue inserting and 2 for the the menu: "))
+            if proceed == 1:
+                insert_customer()
+                customer_file()
+                print("-------------------------")
+                customer_menu()
+            else:
+                customer_menu()
 
+        elif selection == 2:
+            delete_customer()
+            print("-----------------------------")
+            proceed = int(input("\nPress 1 to continue deleting and 2 for the menu: "))
+            if proceed == 1:
+                delete_customer()
+                print("------------------------")
+                customer_menu()
+            else:
+                customer_menu()
 
-def delete_customer(customer_list):
-    id_to_delete = input("Enter the customer id to delete: ")
-    for i in range(len(customer_list) - 1):
-        customer_id = customer_list[i]['customer_id']
-        if customer_id == id_to_delete:
-            customer_list.remove(customer_list[i])
-    return customer_list
+        elif selection == 3:
+            update_customer()
+            print("----------------------------")
+            proceed = int(input("press 1 to continue updating and 2 for the menu"))
+            if proceed == 1:
+                update_customer()
+                print("-----------------------")
+                customer_menu()
+            else:
+                customer_menu()
 
-
-def update_customer(customer_list):
-    update_id = input("Kindly enter the customer id to update: ")
-    print("""
-    1. update by name.
-    2. update by address.""")
-    print()
-    update_option = int(input("Enter your option from above: "))
-    for i in range(len(customer_list)):
-        customer_id = customer_list[i]['customer_id']
-        if customer_id == update_id:
-            if update_option == 1:
-                print("You are about to change a customer's name!")
-                print()
-                new_name = input("Enter a new name: ")
-                customer_list[i]['name'] = new_name
-            elif update_option == 2:
-                print("You are about to change a customer's address! ")
-                print()
-                new_address = input("Enter a new address: ")
-                customer_list[i]['address'] = new_address
-    return customer_list
-
-
-def write_c_data(customer_list):
-    infile = open('Customers.txt', 'w')
-    infile.write(str(customer_list))
-    infile.close()
-'''
+        else:
+            Exit = False

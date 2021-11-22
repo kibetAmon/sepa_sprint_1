@@ -1,1 +1,0 @@
-[<customer_operations.Customers object at 0x000002E403C9AAC8>]
